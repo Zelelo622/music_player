@@ -1,0 +1,42 @@
+{
+  "parser": "babel-eslint",
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es5",
+    "lib": ["ES2021", "dom"],
+    "moduleResolution": "node",
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "preserve",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false,
+    "esModuleInterop": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "declaration": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "downlevelIteration": true,
+    "baseUrl": "./",
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "paths": {
+      "src": ["./src"],
+      "src/*": ["./src/*"]
+    },
+    "suppressImplicitAnyIndexErrors": false
+  },
+  "exclude": ["node_modules", ".npm", "build", "nginx", "public", "scripts"],
+  "include": ["types", "src", "./src/**/*", "vite.config.ts"]
+}
