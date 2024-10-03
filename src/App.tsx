@@ -1,8 +1,6 @@
-import { PrismaneProvider } from "@prismane/core";
-import React from "react";
+import HeaderComponent from "./components/Header";
+import "./index.css";
 
-const App: React.FC = (): JSX.Element => (
-  <PrismaneProvider>HelloWorld</PrismaneProvider>
-);
+const App: React.FC = (): JSX.Element => <HeaderComponent />;
 
 export default App;
