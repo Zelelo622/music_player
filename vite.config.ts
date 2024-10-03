@@ -1,14 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig(() => {
-  return {
-    plugins: [
-      react({
-        babel: {
-          plugins: [["babel-plugin-styled-components", { displayName: true }]]
-        }
-      })
-    ]
-  };
-});
+// TODO: удалить плагин для styled-components (перешли на tailwind)
+export default defineConfig(() => ({
+  plugins: [
+    react({
+      babel: {
+        plugins: [["babel-plugin-styled-components", { displayName: true }]]
+      }
+    })
+  ]
+}));
