@@ -2,7 +2,7 @@ import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
 
 const Library: React.FC = () => {
-  const handleAddPlaylist = (): null => null;
+  const handleAddPlaylist = (): void => {};
 
   return (
     <div className="flex flex-col">
