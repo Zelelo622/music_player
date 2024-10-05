@@ -1,7 +1,20 @@
 import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
+import { useStores } from "../../dal";
+import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
+import PlaylistItem from "../PlaylistItem/PlaylistItem";
 
-const Library: React.FC = () => {
+const Library: React.FC = observer(() => {
+  const {
+    HomeStore: { playlists, getListPlaylists }
+  } = useStores();
+
+  // TODO: нужно протестировать при post запросе, будет список обнволяться?
+  useEffect(() => {
+    getListPlaylists();
+  }, []);
+
   const handleAddPlaylist = (): void => {};
 
   return (
@@ -17,9 +30,13 @@ const Library: React.FC = () => {
           className="text-neutral-400 cursor-pointer hover:text-white transition"
         />
       </div>
-      <div className="flex flex-col gap-y-2 mt-4 px-3">Список плейлистов</div>
+      <div className="flex flex-col gap-y-2 mt-4 px-3">
+        {playlists.map((item) => (
+          <PlaylistItem onClick={() => {}} key={item.id} data={item} />
+        ))}
+      </div>
     </div>
   );
-};
+});
 
 export default Library;

@@ -4,9 +4,9 @@ import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import Button from "../Button/Button";
-import { HeaderProps } from "./types";
+import { IHeaderProps } from "./types";
 
-const Header: React.FC<HeaderProps> = ({ children, className }) => {
+const Header: React.FC<IHeaderProps> = ({ children, className }) => {
   const navigate = useNavigate();
 
   // TODO: реализовать выход из аккаунта

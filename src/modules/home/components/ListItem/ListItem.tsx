@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
 import { FaPlay } from "react-icons/fa";
-import { ListItemProps } from "./types";
+import { IListItemProps } from "./types";
 
-const ListItem: React.FC<ListItemProps> = ({ image, name, href }) => {
+const ListItem: React.FC<IListItemProps> = ({ image, name, href }) => {
   const navigate = useNavigate();
 
   const handleClickPlaylist = (): void => {

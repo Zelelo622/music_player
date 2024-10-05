@@ -1,2 +1,2 @@
-export interface ButtonProps
+export interface IButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {}

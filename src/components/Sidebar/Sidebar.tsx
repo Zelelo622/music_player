@@ -6,9 +6,10 @@ import { HOME_ROUTE, SEARCH_ROUTE } from "../../routes/constants";
 import Box from "../Box/Box";
 import SidebarItem from "../SidebarItem/SidebarItem";
 import Library from "../Library/Library";
-import { SidebarProps } from "./types";
+import { ISidebarProps } from "./types";
+import { observer } from "mobx-react-lite";
 
-const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+const Sidebar: React.FC<ISidebarProps> = observer(({ children }) => {
   const location = useLocation();
   const pathname = location.pathname;
   const routes = useMemo(
@@ -46,6 +47,6 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
       <main className="h-full flex-1 overflow-y-auto py-2">{children}</main>
     </div>
   );
-};
+});
 
 export default Sidebar;

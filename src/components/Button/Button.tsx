@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { ButtonProps } from "./types";
+import { IButtonProps } from "./types";
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, IButtonProps>(
   ({ className, children, disabled, type = "button", ...props }, ref) => (
     <button
       type={type}
