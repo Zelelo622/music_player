@@ -1,7 +1,12 @@
+import { generatePath, useNavigate } from "react-router";
+import { PLAYLIST_ROUTE } from "../../routes/constants";
 import { IPlaylistItemProps } from "./types";
 
 const PlaylistItem: React.FC<IPlaylistItemProps> = ({ data, onClick }) => {
+  const navigate = useNavigate();
+
   const handleClick = (): void => {
+    navigate(generatePath(`${PLAYLIST_ROUTE}/:id`, { id: data.id }));
     if (onClick) {
       return onClick(data.id);
     }

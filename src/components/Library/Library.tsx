@@ -1,8 +1,8 @@
 import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
-import { useStores } from "../../dal";
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
+import { useStores } from "../../dal";
 import PlaylistItem from "../PlaylistItem/PlaylistItem";
 
 const Library: React.FC = observer(() => {

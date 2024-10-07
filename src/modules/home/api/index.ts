@@ -19,6 +19,18 @@ class HomeApi {
       throw error;
     }
   }
+
+  async getLikedPlaylists(): Promise<IPlaylist> {
+    try {
+      const response = await axios.get<{ likedPlaylist: IPlaylist }>(
+        `${this.baseUrl}/liked-playlist`
+      );
+      return response.data.likedPlaylist;
+    } catch (error) {
+      console.error("Error fetching playlist:", error);
+      throw error;
+    }
+  }
 }
 
 export default HomeApi;

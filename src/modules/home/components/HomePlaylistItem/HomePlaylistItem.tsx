@@ -1,16 +1,27 @@
-import { useNavigate } from "react-router";
+import { generatePath, useNavigate } from "react-router";
 import { FaPlay } from "react-icons/fa";
+import { PLAYLIST_ROUTE } from "../../../../routes/constants";
 import { IListItemProps } from "./types";
 
-const ListItem: React.FC<IListItemProps> = ({ image, name, href }) => {
+const HomePlaylistItem: React.FC<IListItemProps> = ({ playlistData }) => {
   const navigate = useNavigate();
 
   const handleClickPlaylist = (): void => {
-    navigate(href);
+    // TODO: нужно ли это вообще? Может быть просто оставить плей на листах?
+    navigate(
+      generatePath(`${PLAYLIST_ROUTE}/:id`, {
+        id: playlistData.id
+      })
+    );
+  };
+
+  const playSoundPlaylist = (event: React.MouseEvent): void => {
+    event.stopPropagation();
+    // TODO логика для старта песен плейлиста
   };
 
   return (
-    <button
+    <div
       className="
         relative
         group
@@ -23,16 +34,18 @@ const ListItem: React.FC<IListItemProps> = ({ image, name, href }) => {
         hover:bg-neutral-100/20
         transition
         pr-4
-    ">
+        cursor-pointer
+    "
+      onClick={handleClickPlaylist}>
       <div className="relative min-h-[64px] min-w-[64px]">
         <img
           className="object-cover h-[64px] w-[64px]"
-          src={image}
+          src={playlistData.playlistsCover}
           alt="Image"
         />
       </div>
-      <p className="font-medium truncate py-5">{name}</p>
-      <div
+      <p className="font-medium truncate py-5">{playlistData.title}</p>
+      <button
         className="
         absolute
         transition
@@ -47,11 +60,12 @@ const ListItem: React.FC<IListItemProps> = ({ image, name, href }) => {
         right-5
         group-hover:opacity-100
         hover:scale-110
-      ">
+      "
+        onClick={playSoundPlaylist}>
         <FaPlay className="text-black" />
-      </div>
-    </button>
+      </button>
+    </div>
   );
 };
 
-export default ListItem;
+export default HomePlaylistItem;

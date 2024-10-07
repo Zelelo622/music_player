@@ -1,10 +1,17 @@
-import { PLAYLIST_ROUTE } from "../../../../routes/constants";
+import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 import Header from "../../../../components/Header/Header";
-import ListItem from "../../components/ListItem/ListItem";
+import HomePlaylistItem from "../../components/HomePlaylistItem/HomePlaylistItem";
+import { useStores } from "../../../../dal";
 
-const HomePage: React.FC = () => {
-  // TODO: получать со стора нужный id плейлиста
-  const playlistId = 1;
+const HomePage: React.FC = observer(() => {
+  const {
+    HomeStore: { likedPlaylist, getLikedPlaylist }
+  } = useStores();
+
+  useEffect(() => {
+    getLikedPlaylist();
+  }, []);
 
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
@@ -12,11 +19,7 @@ const HomePage: React.FC = () => {
         <div className="mb-2">
           <h1 className="text-white text-3xl font-semibold">С возвращением</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 mt-4">
-            <ListItem
-              image="/src/assets/images/playlist-liked.png"
-              name="Мне нравится"
-              href={`${PLAYLIST_ROUTE}/${playlistId}`}
-            />
+            <HomePlaylistItem playlistData={likedPlaylist} />
           </div>
         </div>
       </Header>
@@ -28,6 +31,6 @@ const HomePage: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default HomePage;

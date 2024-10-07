@@ -2,12 +2,12 @@ import { useMemo } from "react";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import { useLocation } from "react-router";
+import { observer } from "mobx-react-lite";
 import { HOME_ROUTE, SEARCH_ROUTE } from "../../routes/constants";
 import Box from "../Box/Box";
 import SidebarItem from "../SidebarItem/SidebarItem";
 import Library from "../Library/Library";
 import { ISidebarProps } from "./types";
-import { observer } from "mobx-react-lite";
 
 const Sidebar: React.FC<ISidebarProps> = observer(({ children }) => {
   const location = useLocation();

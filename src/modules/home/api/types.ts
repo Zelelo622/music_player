@@ -3,4 +3,5 @@ export interface IPlaylist {
   title: string;
   playlistsCover: string;
   songIds: string[];
+  isLikedPlaylist: boolean;
 }

@@ -19,6 +19,18 @@ server.get("/playlists", async (req, res) => {
   await res.send(getPlaylists);
 });
 
+server.get("/liked-playlist", async (req, res) => {
+  await addDelay(200);
+  const likedPlaylist = getPlaylists.playlists.find(
+    (playlist) => playlist.isLikedPlaylist
+  );
+  if (likedPlaylist) {
+    res.send({ likedPlaylist });
+  } else {
+    res.status(404).send({ error: "Liked playlist not found" });
+  }
+});
+
 server.listen(3004, () => {
   console.log(`JSON Server is running: http://localhost:3004`);
 });

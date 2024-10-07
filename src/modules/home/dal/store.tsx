@@ -6,6 +6,13 @@ export class HomeStore {
   protected readonly homeApi: HomeApi;
 
   playlists: IPlaylist[] = [];
+  likedPlaylist: IPlaylist = {
+    id: "",
+    title: "",
+    playlistsCover: "",
+    songIds: [],
+    isLikedPlaylist: true
+  };
 
   constructor() {
     // TODO: убрать baseURL и сделать env
@@ -13,8 +20,10 @@ export class HomeStore {
 
     makeObservable(this, {
       playlists: observable,
+      likedPlaylist: observable,
 
-      getListPlaylists: action
+      getListPlaylists: action,
+      getLikedPlaylist: action
     });
   }
 
@@ -23,6 +32,16 @@ export class HomeStore {
       .getPlaylists()
       .then((res) => {
         this.playlists = res;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+  public getLikedPlaylist = (): Promise<void> =>
+    this.homeApi
+      .getLikedPlaylists()
+      .then((res) => {
+        this.likedPlaylist = res;
       })
       .catch((error) => {
         console.error(error);
